@@ -17,7 +17,7 @@ class java::install {
 
     exec { 'accepted-oracle-terms':
         command => 'sudo echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections',
-        path    => '/sbin',
+        path    => ['/bin', '/usr/bin'],
         before  => Package['oracle-java7-installer']
     }
 
