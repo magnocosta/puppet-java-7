@@ -5,7 +5,7 @@ class java::install {
 
     exec { "add-repository-apt":
         command  => "add-apt-repository ppa:webupd8team/java",
-        unless   => "grep -Ec java /etc/apt/sources.list.d/*.list"
+        unless   => "grep -Ec java /etc/apt/sources.list.d/*.list",
         required => Class["common::basic"]
     }
 
