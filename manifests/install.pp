@@ -15,6 +15,12 @@ class java::install {
         require => Exec['add-repository-apt']
     }
 
+    exec { 'accepted-oracle-terms':
+        command => 'sudo echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections',
+        path    => '/sbin',
+        before  => 'oracle-java7-installer'
+    }
+
     package { 'oracle-java7-installer':
         ensure  => installed,
         require => Exec['apt-update-java']
